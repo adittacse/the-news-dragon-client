@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, ListGroup} from "react-bootstrap";
 import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import QZone from "../QZone/QZone.jsx";
+import bg from "../../../assets/bg.png";
 
 const RightNav = () => {
     return (
@@ -20,6 +21,11 @@ const RightNav = () => {
                 </ListGroup>
             </div>
             <QZone></QZone>
+            <div className="text-center text-white mt-4" style={{backgroundImage: `url(${bg})`}}>
+                <h2 className="pt-5 px-4">Create an Amazing Newspaper</h2>
+                <p className="mt-5 px-4">Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
+                <Button variant="danger" className="mt-5 mb-5">Lean More</Button>
+            </div>
         </div>
     );
 };
