@@ -1,21 +1,17 @@
 import React from 'react';
 import Header from "../pages/Shared/Header/Header.jsx";
-import Footer from "../pages/Shared/Footer/Footer.jsx";
 import {Col, Container, Row} from "react-bootstrap";
-import LeftNav from "../pages/Shared/LeftNav/LeftNav.jsx";
-import RightNav from "../pages/Shared/RightNav/RightNav.jsx";
 import {Outlet} from "react-router-dom";
+import RightNav from "../pages/Shared/RightNav/RightNav.jsx";
+import Footer from "../pages/Shared/Footer/Footer.jsx";
 
-const Main = () => {
+const NewsLayout = () => {
     return (
         <div>
             <Header></Header>
             <Container className="mt-5">
                 <Row>
-                    <Col lg={3}>
-                        <LeftNav></LeftNav>
-                    </Col>
-                    <Col lg={6}>
+                    <Col lg={9}>
                         <Outlet></Outlet>
                     </Col>
                     <Col lg={3}>
@@ -28,4 +24,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default NewsLayout;
