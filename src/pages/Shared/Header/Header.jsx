@@ -6,6 +6,7 @@ import {Button, Container} from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -26,7 +27,7 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/"><Link to="/">Home</Link></Nav.Link>
                             <Nav.Link href="/about">About</Nav.Link>
                             <Nav.Link href="/career">Career</Nav.Link>
                         </Nav>
