@@ -87,7 +87,7 @@ const Register = () => {
                                 label={<>Accept <Link to="/terms">Terms & Conditions</Link></>} />
                 </Form.Group>
                 
-                <Button variant="primary d-block" type="submit" disabled={!accepted}>Login</Button>
+                <Button variant="primary d-block" type="submit" disabled={!accepted}>Register</Button>
                 <Form.Text className="text-secondary">
                     Already Have An Account ? <Link to="/login">Login</Link>
                 </Form.Text>
