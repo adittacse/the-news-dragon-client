@@ -4,7 +4,31 @@ import {Link} from "react-router-dom";
 import {AuthContext} from "../../../providers/AuthProvider.jsx";
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, userUpdateProfile} = useContext(AuthContext);
+   
+    const handleUpdateName = (user, data) => {
+        userUpdateProfile(user, {
+            displayName: data,
+        })
+            .then( () => {
+                console.log("User updated");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+    
+    const handleUpdatePhoto = (user, data) => {
+        userUpdateProfile(user, {
+            photoURL: data,
+        })
+            .then( () => {
+                console.log("User updated");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
     
     const handleRegister = (event) => {
         event.preventDefault();
@@ -18,11 +42,15 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
+                
+                handleUpdateName(createdUser, name);
+                handleUpdatePhoto(createdUser, photo);
+                
                 console.log(createdUser);
             })
             .catch(error => {
                 console.error(error);
-            })
+            });
     }
     
     return (
