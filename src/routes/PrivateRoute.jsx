@@ -8,9 +8,11 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
     
     if (loading) {
-        return <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner>;
+        return <div className="d-flex justify-content-center">
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>
     }
     
     if (user) {
