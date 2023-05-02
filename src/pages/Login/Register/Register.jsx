@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import {AuthContext} from "../../../providers/AuthProvider.jsx";
 
 const Register = () => {
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
     const {createUser, userUpdateProfile} = useContext(AuthContext);
     const [accepted, setAccepted] = useState(false);
    
@@ -15,7 +17,7 @@ const Register = () => {
                 console.log("User updated");
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             });
     }
     
@@ -27,12 +29,14 @@ const Register = () => {
                 console.log("User updated");
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             });
     }
     
     const handleRegister = (event) => {
         event.preventDefault();
+        setSuccess("");
+        setError("");
         
         const form = event.target;
         const name = form.name.value;
@@ -43,14 +47,12 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
-                
                 handleUpdateName(createdUser, name);
                 handleUpdatePhoto(createdUser, photo);
-                
-                console.log(createdUser);
+                setSuccess("User has been created");
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             });
     }
     
@@ -92,13 +94,9 @@ const Register = () => {
                     Already Have An Account ? <Link to="/login">Login</Link>
                 </Form.Text>
                 
-                <Form.Text className="d-block text-success">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Text className="d-block text-success">{success}</Form.Text>
                 
-                <Form.Text className="text-danger">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Text className="text-danger">{error}</Form.Text>
             </Form>
         </Container>
     );

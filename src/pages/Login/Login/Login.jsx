@@ -1,9 +1,11 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Button, Container, Form} from "react-bootstrap";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../../providers/AuthProvider.jsx";
 
 const Login = () => {
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
     const {signIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -11,6 +13,8 @@ const Login = () => {
     
     const handleSignIn = (event) => {
         event.preventDefault();
+        setSuccess("");
+        setError("");
         
         const form = event.target;
         const email = form.email.value;
@@ -22,7 +26,7 @@ const Login = () => {
                 navigate(from, {replace: true});
             })
             .catch(error => {
-                console.error(error);
+                setError("Wrong Credentials");
             })
     }
     
@@ -45,13 +49,8 @@ const Login = () => {
                     Dont’t Have An Account ? <Link to="/register">Register</Link>
                 </Form.Text>
                 
-                <Form.Text className="d-block text-success">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-                
-                <Form.Text className="text-danger">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Text className="d-block text-success">{success}</Form.Text>
+                <Form.Text className="text-danger">{error}</Form.Text>
             </Form>
         </Container>
     );
