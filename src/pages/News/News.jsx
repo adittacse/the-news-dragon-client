@@ -16,7 +16,7 @@ const News = () => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>{details}</Card.Text>
-                    <Link to={`http://localhost:5173/category/${category_id}`}>
+                    <Link to={`https://the-news-dragon-server-adittacse.vercel.app/category/${category_id}`}>
                         <Button style={{background: "#D72050", border: "none"}} variant="primary">
                             <FaArrowLeft></FaArrowLeft> All news in this category</Button>
                     </Link>
